@@ -126,11 +126,12 @@ GroceryBillingSystem.exe
 
 ## 📸 Preview
 
-> Add a preview image or GIF inside `static/` folder  
-> Then link it like:
-
 ```md
-![Preview](static/preview.png)
+![image](https://github.com/user-attachments/assets/75892ebb-52a4-4ad5-b2d4-9653cacaa48e)
+
+![image](https://github.com/user-attachments/assets/945a8d9c-4fdb-4154-a277-279a43290108)
+
+
 ```
 
 ---
