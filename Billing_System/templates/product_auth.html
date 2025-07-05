@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        :root {
+            --coffee: #4b2e2e;
+            --cream: #f6f1eb;
+            --caramel: #c69c6d;
+            --dark: #2e1f1f;
+            --text: #2e2e2e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--cream);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text);
+        }
+
+        .verify-box {
+            background: #fff8f2;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .verify-box h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--coffee);
+        }
+
+        .verify-box input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+            font-size: 1rem;
+        }
+
+        .verify-box input[type="password"]:focus {
+            border-color: var(--caramel);
+            outline: none;
+        }
+
+        .verify-box button {
+            width: 100%;
+            padding: 12px;
+            background: var(--caramel);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .verify-box button:hover {
+            background: var(--coffee);
+        }
+
+        .messages {
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .messages ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .messages li {
+            color: red;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 500px) {
+            .verify-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verify-box">
+        <h2>Admin Verification</h2>
+        <form method="POST">
+            <input type="password" name="admin_password" placeholder="Admin Password" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="messages">
+              <ul>
+                {% for category, message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+
+</body>
+</html>

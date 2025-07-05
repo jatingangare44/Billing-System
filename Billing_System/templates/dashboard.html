@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The King's Grocery - Dashboard</title>
+  <style>
+    :root {
+      --coffee: #4b2e2e;
+      --cream: #f6f1eb;
+      --caramel: #c69c6d;
+      --dark: #2e1f1f;
+      --text: #2e2e2e;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff8f2;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--coffee);
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    form {
+      margin-bottom: 25px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    select {
+      padding: 10px;
+      width: 100%;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fdf9f6;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: var(--caramel);
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--coffee);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      background: #fff;
+      margin: 8px 0;
+      padding: 10px 14px;
+      border-left: 4px solid var(--coffee);
+      border-radius: 6px;
+    }
+
+    a {
+      color: var(--caramel);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: var(--dark);
+    }
+
+    .totals p {
+      margin: 6px 0;
+      font-size: 1rem;
+    }
+
+    .totals strong {
+      color: var(--coffee);
+    }
+
+    .footer-links {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>☕ The King's Grocery</h2>
+
+    <form method="POST">
+      <label>Product ID:</label>
+      <input name="product_id" type="number" required>
+
+      <label>Quantity:</label>
+      <input name="quantity" type="number" min="1" value="1" required>
+
+      <button type="submit">➕ Add to Cart</button>
+    </form>
+
+    <h3>🛒 Cart Items</h3>
+    <ul>
+      {% for item in cart %}
+        <li>
+          {{ item.name }} ({{ item.qty }}) = ₹{{ item.subtotal }}
+          <a href="{{ url_for('remove_item', index=loop.index0) }}">[Remove]</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="totals">
+      <p>Total: ₹{{ total }}</p>
+      <p>GST (18%): ₹{{ gst }}</p>
+      <p>Discount (10%): ₹{{ discount }}</p>
+      <p><strong>Final Amount: ₹{{ final }}</strong></p>
+    </div>
+
+    <form action="/generate_bill" method="POST">
+      <label>Customer Name:</label>
+      <input type="text" name="customer_name" required>
+
+      <label>Mobile:</label>
+      <input name="customer_mobile" type="tel" required pattern="[0-9]{10}" placeholder="10-digit number">
+
+      <label>Payment Method:</label>
+      <select name="payment_method">
+        <option>Cash</option>
+        <option>UPI</option>
+        <option>Credit Card</option>
+        <option>Net Banking</option>
+      </select>
+
+      <button type="submit">🧾 Generate Bill (PDF)</button>
+    </form>
+
+    <div class="footer-links">
+      <a href="/logout">🚪 Logout</a>
+      <a href="/product-auth">🔧 Manage Products</a>
+    </div>
+  </div>
+</body>
+</html>
