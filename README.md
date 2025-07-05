@@ -5,6 +5,9 @@ A simple, user-friendly Flask web application for grocery billing and product ma
 
 ![image](https://github.com/user-attachments/assets/054ad71e-ce11-4723-aa20-b3e6fdc95992)
 
+![image](https://github.com/user-attachments/assets/56e3d395-fc98-44fd-b97a-0cb6c2b3122e)
+
+
 
 ---
 
