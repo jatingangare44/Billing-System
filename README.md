@@ -126,13 +126,10 @@ GroceryBillingSystem.exe
 
 ## 📸 Preview
 
-```md
 ![image](https://github.com/user-attachments/assets/75892ebb-52a4-4ad5-b2d4-9653cacaa48e)
 
 ![image](https://github.com/user-attachments/assets/945a8d9c-4fdb-4154-a277-279a43290108)
 
-
-```
 
 ---
 
