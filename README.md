@@ -3,8 +3,8 @@
 
 A simple, user-friendly Flask web application for grocery billing and product management, featuring PDF bill generation, admin authentication, and a coffee-themed dashboard UI.
 
-![App Screenshot](![image](https://github.com/user-attachments/assets/3f5fcc6a-dfa1-4852-bc84-5a077989ff4d)
-)
+![image](https://github.com/user-attachments/assets/054ad71e-ce11-4723-aa20-b3e6fdc95992)
+
 
 ---
 
